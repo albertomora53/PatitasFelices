@@ -1,0 +1,157 @@
+﻿/* Estilos para las secciones de pasos */
+.seccion-pasos {
+    background-color: #0f172a; /* Fondo azul muy oscuro */
+    color: white;
+    padding: 80px 0;
+}
+
+.paso-card {
+    background-color: #1e293b; /* Fondo de la tarjeta */
+    border-radius: 20px;
+    padding: 30px;
+    height: 100%;
+    border: 1px solid #334155;
+    transition: transform 0.3s ease;
+}
+
+    .paso-card:hover {
+        transform: translateY(-10px);
+    }
+
+.paso-numero {
+    color: #f87171; /* Color rojizo/rosa del texto 'Paso 01' */
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-top: 15px;
+    display: block;
+}
+
+.paso-icono {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.paso-titulo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.paso-texto {
+    color: #cbd5e1; /* Texto secundario gris claro */
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Estilos para el Bloque de Contacto */
+.seccion-contacto {
+    padding: 80px 0;
+    background-color: #8AA2C3; /* Fondo casi blanco / gris muy claro */
+    color: #333;
+}
+
+.form-contacto .form-control {
+    border-radius: 50px; /* Bordes muy redondeados como la imagen */
+    padding: 15px 25px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+}
+
+.form-contacto textarea.form-control {
+    border-radius: 25px; /* Menos redondeado para el área de mensaje */
+    resize: none;
+}
+
+.btn-enviar {
+    background-color: #264673; /* Azul oscuro de la imagen */
+    color: white;
+    padding: 12px 60px;
+    border-radius: 50px;
+    border: none;
+    font-weight: bold;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+    .btn-enviar:hover {
+        background-color: #1a304f;
+        color: white;
+        transform: scale(1.05);
+    }
+
+.titulo-contacto {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+    color: #1a1a1a;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.btn-ver {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 12px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+    .btn-ver:hover {
+        background: white;
+        color: #333;
+    }
+
+/* Sección siguiente */
+.seccion-animales {
+    padding: 80px 0;
+    background-color: white;
+}
+
+/* Ajuste para iconos de Bootstrap */
+.paso-icono {
+    font-size: 2.5rem; /* Tamaño del icono */
+    color: #f87171; /* Color rosa/coral para resaltar */
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+/* Color secundario para los iconos del cuarto bloque */
+.icono-adopcion {
+    color: #60a5fa; /* Un azul claro para diferenciar "Dar en adopción" */
+}
+
+/* ... tu estilo hero-block existente ... */
+/* Estilos extra para ajustar el carrusel */
+.swiper {
+    width: 100%;
+    padding-bottom: 50px; /* Espacio para la paginación si la usas */
+}
+
+.swiper-slide {
+    height: auto; /* Para que todas las cartas tengan el mismo alto */
+    display: flex;
+    justify-content: center;
+}
+
+.pet-card {
+    width: 100%; /* Asegura que la tarjeta llene el slide */
+}
+
+.swiper {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 50px;
+}

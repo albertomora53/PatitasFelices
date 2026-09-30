@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Adopcion" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ALBERT;Initial Catalog=Adopcion;User ID=Proyecto;Trust Server Certificate=True" SettingsObjectName="Adopcion_Data.Properties.Settings" SettingsPropertyName="AdopcionConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Animales" Member="Animales">
+    <Type Name="Animales">
+      <Column Name="Id_Animal" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Especie" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Refugio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Genero" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Edad" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Imagen" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Tamano" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Personalidad" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Animales_Solicitud_Adopcion" Member="Solicitud_Adopcion" ThisKey="Id_Animal" OtherKey="Id_Animal" Type="Solicitud_Adopcion" />
+      <Association Name="Refugio_Animales" Member="Refugio" ThisKey="Id_Refugio" OtherKey="Id_Refugio" Type="Refugio" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Solicitud_Adopcion" Member="Solicitud_Adopcion">
+    <Type Name="Solicitud_Adopcion">
+      <Column Name="Id_Solicitud" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Id_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Animal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Situacion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Folio" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Animales_Solicitud_Adopcion" Member="Animales" ThisKey="Id_Animal" OtherKey="Id_Animal" Type="Animales" IsForeignKey="true" />
+      <Association Name="User_Solicitud_Adopcion" Member="User" ThisKey="Id_Usuario" OtherKey="Id_Usuario" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Refugio" Member="Refugio">
+    <Type Name="Refugio">
+      <Column Name="Id_Refugio" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Ref" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Refugio_Animales" Member="Animales" ThisKey="Id_Refugio" OtherKey="Id_Refugio" Type="Animales" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="User">
+    <Type Name="User">
+      <Column Name="Id_Usuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido_Pat" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Apellido_Mat" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Correo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RFC" Type="System.String" DbType="NVarChar(13)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="tipo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Ref" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="User_Solicitud_Adopcion" Member="Solicitud_Adopcion" ThisKey="Id_Usuario" OtherKey="Id_Usuario" Type="Solicitud_Adopcion" />
+    </Type>
+  </Table>
+</Database>

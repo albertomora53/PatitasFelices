@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MyWSDB" Class="DataClassesWSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ALBERT;Initial Catalog=MyWSDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="Data_AdopcionWS.Properties.Settings" SettingsPropertyName="MyWSDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.WScontacto" Member="WScontacto">
+    <Type Name="WScontacto">
+      <Column Name="Id_cont" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="correo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="fecha" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SolicitudesAdopcionWS" Member="SolicitudesAdopcionWS">
+    <Type Name="SolicitudesAdopcionWS">
+      <Column Name="Id_SolicitudWS" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Animal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FechaSolicitud" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EdadSolicitante" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ocupacion" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DireccionCompleta" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="RedesSociales" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TipoVivienda" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TenenciaInmueble" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="PermisoDuenio" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SeguridadEntorno" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="IntegrantesHogar" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="AcuerdoFamiliar" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="HayAlergias" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="OtrasMascotas" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="SociabilidadMascotas" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="HorasSolo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LugarDormir" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PlanMudanza" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="MotivoAdopcion" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="AceptaGastos" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AceptaCompromiso" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

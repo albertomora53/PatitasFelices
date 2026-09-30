@@ -1,0 +1,68 @@
+﻿/* estilos-carrusel.css */
+
+/* 1. IMPORTANTE: Hace que todas las slides tengan la misma altura */
+.swiper-slide {
+    height: auto !important;
+    display: flex; /* Convierte el slide en contenedor flex */
+    justify-content: center;
+}
+
+/* 2. Obliga a la tarjeta a ocupar toda la altura del slide */
+.pet-card {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 3. Hace que el cuerpo de la tarjeta ocupe el espacio sobrante */
+.card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto; /* Rellena el espacio vacío */
+}
+
+    /* 4. Empuja el botón siempre hacia abajo */
+    .card-body .d-grid {
+        margin-top: auto;
+    }
+
+.contenedor-carrusel {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden; /* Recorta lo que se sale */
+    padding: 0 15px;
+}
+
+/* Regla corregida para el wrapper */
+.swiper-wrapper {
+    display: flex !important;
+    align-items: stretch; /* Vital para que las tarjetas tengan la misma altura */
+    box-sizing: content-box;
+}
+
+.hero-block {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../Imagenes/Animals.png'); /* OJO: Revisa que la ruta de la imagen sea correcta desde donde guardes el CSS */
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.swiper {
+    width: 100%;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 50px;
+}

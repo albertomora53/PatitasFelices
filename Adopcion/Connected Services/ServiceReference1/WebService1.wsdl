@@ -1,0 +1,1243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://adopcionws.com/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://adopcionws.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://adopcionws.com/">
+      <s:element name="RegistroUsuarios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="tipo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellidoPat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellidoMat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rfc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ref" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistroUsuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistroUsuariosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevaPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="nuevoTipo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevoNombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevoApellidoPat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevoApellidoMat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevoTelefono" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevoCorreo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevoRFC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevoRef" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EditarUsuarioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EliminarUsuarioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="tns:ResultadoLogin" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultadoLogin">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Exito" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoUsuario" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListarUsuarios">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarUsuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarUsuariosResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Usuario" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellido_Pat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellido_Mat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RFC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="tipo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ref" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Solicitud_Adopcion" type="tns:ArrayOfSolicitud_Adopcion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSolicitud_Adopcion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Solicitud_Adopcion" nillable="true" type="tns:Solicitud_Adopcion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Solicitud_Adopcion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Solicitud" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Usuario" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Animal" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Situacion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Folio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Animales" type="tns:Animales" />
+          <s:element minOccurs="0" maxOccurs="1" name="User" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Animales">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Animal" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Especie" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Refugio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Genero" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Edad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Imagen" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tamano" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Personalidad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Solicitud_Adopcion" type="tns:ArrayOfSolicitud_Adopcion" />
+          <s:element minOccurs="0" maxOccurs="1" name="Refugio" type="tns:Refugio" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Refugio">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Refugio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ref" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Animales" type="tns:ArrayOfAnimales" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAnimales">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Animales" nillable="true" type="tns:Animales" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegistroRefugio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ref" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistroRefugioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistroRefugioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditarRefugio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idRefugio" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevoNombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevaDireccion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevoEstado" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ref" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditarRefugioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EditarRefugioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarRefugio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idRefugio" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarRefugioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EliminarRefugioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarRefugios">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarRefugiosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarRefugiosResult" type="tns:ArrayOfRefugio" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRefugio">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Refugio" nillable="true" type="tns:Refugio" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegistroAnimal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Especie" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Refugio" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Genero" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Edad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Imagen" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Tamano" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Personalidad" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistroAnimalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistroAnimalResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditarAnimal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idAnimal" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevoNombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevaEspecie" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="nuevoIdRefugio" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevaDescripcion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevoGenero" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevaEdad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevaImagen" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevaTamano" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevaPersonalidad" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditarAnimalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EditarAnimalResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerFolio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idSolicitud" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerFolioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerFolioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarAnimal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idAnimal" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarAnimalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EliminarAnimalResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarAnimales">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarAnimalesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarAnimalesResult" type="tns:ArrayOfAnimales" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistroSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Usuario" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Animal" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Situacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Folio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistroSolicitudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistroSolicitudResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditarSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idSolicitud" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nuevoIdAnimal" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevaSituacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nuevoFolio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditarSolicitudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EditarSolicitudResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idSolicitud" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarSolicitudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EliminarSolicitudResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarSolicitudes">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarSolicitudesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarSolicitudesResult" type="tns:ArrayOfSolicitud_Adopcion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarMensajeWS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarMensajeWSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrarMensajeWSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarSolicitudCompleta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Id_SolicitudWS" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idUsuario" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idAnimal" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="edad" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ocupacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="redes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipoVivienda" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tenencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="permisoDuenio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="seguridad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="integrantes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="acuerdo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="alergias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="otrasMascotas" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sociabilidad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="horasSolo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lugarDormir" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mudanza" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="motivo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="aceptaGastos" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="aceptaCompromiso" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarSolicitudCompletaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrarSolicitudCompletaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarSolicitudCompleta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Id_SolicitudWS" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarSolicitudCompletaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EliminarSolicitudCompletaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerDetalleSolicitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Id_SolicitudWS" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerDetalleSolicitudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VerDetalleSolicitudResult" type="tns:SolicitudesAdopcionWS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SolicitudesAdopcionWS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id_SolicitudWS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Usuario" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Animal" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaSolicitud" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EdadSolicitante" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ocupacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DireccionCompleta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RedesSociales" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoVivienda" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TenenciaInmueble" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PermisoDuenio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SeguridadEntorno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IntegrantesHogar" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AcuerdoFamiliar" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HayAlergias" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OtrasMascotas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SociabilidadMascotas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HorasSolo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LugarDormir" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlanMudanza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MotivoAdopcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AceptaGastos" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AceptaCompromiso" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListarSolicitudesPorUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idUsuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarSolicitudesPorUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarSolicitudesPorUsuarioResult" type="tns:ArrayOfSolicitud_Adopcion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarAnimalesPorRefugio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idRefugio" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarAnimalesPorRefugioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarAnimalesPorRefugioResult" type="tns:ArrayOfAnimales" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerInfoUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idUsuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerInfoUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerInfoUsuarioResult" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RegistroUsuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistroUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="RegistroUsuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistroUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:EditarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="EditarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:EditarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="EliminarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarUsuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="ListarUsuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistroRefugioSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistroRefugio" />
+  </wsdl:message>
+  <wsdl:message name="RegistroRefugioSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistroRefugioResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditarRefugioSoapIn">
+    <wsdl:part name="parameters" element="tns:EditarRefugio" />
+  </wsdl:message>
+  <wsdl:message name="EditarRefugioSoapOut">
+    <wsdl:part name="parameters" element="tns:EditarRefugioResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarRefugioSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarRefugio" />
+  </wsdl:message>
+  <wsdl:message name="EliminarRefugioSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarRefugioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarRefugiosSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarRefugios" />
+  </wsdl:message>
+  <wsdl:message name="ListarRefugiosSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarRefugiosResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistroAnimalSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistroAnimal" />
+  </wsdl:message>
+  <wsdl:message name="RegistroAnimalSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistroAnimalResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditarAnimalSoapIn">
+    <wsdl:part name="parameters" element="tns:EditarAnimal" />
+  </wsdl:message>
+  <wsdl:message name="EditarAnimalSoapOut">
+    <wsdl:part name="parameters" element="tns:EditarAnimalResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerFolioSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerFolio" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerFolioSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerFolioResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarAnimalSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarAnimal" />
+  </wsdl:message>
+  <wsdl:message name="EliminarAnimalSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarAnimalResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarAnimalesSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarAnimales" />
+  </wsdl:message>
+  <wsdl:message name="ListarAnimalesSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarAnimalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistroSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistroSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="RegistroSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistroSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditarSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:EditarSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="EditarSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:EditarSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="EliminarSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarSolicitudesSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarSolicitudes" />
+  </wsdl:message>
+  <wsdl:message name="ListarSolicitudesSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarSolicitudesResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarMensajeWSSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarMensajeWS" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarMensajeWSSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarMensajeWSResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarSolicitudCompletaSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarSolicitudCompleta" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarSolicitudCompletaSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarSolicitudCompletaResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarSolicitudCompletaSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarSolicitudCompleta" />
+  </wsdl:message>
+  <wsdl:message name="EliminarSolicitudCompletaSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarSolicitudCompletaResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerDetalleSolicitudSoapIn">
+    <wsdl:part name="parameters" element="tns:VerDetalleSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="VerDetalleSolicitudSoapOut">
+    <wsdl:part name="parameters" element="tns:VerDetalleSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarSolicitudesPorUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarSolicitudesPorUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ListarSolicitudesPorUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarSolicitudesPorUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarAnimalesPorRefugioSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarAnimalesPorRefugio" />
+  </wsdl:message>
+  <wsdl:message name="ListarAnimalesPorRefugioSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarAnimalesPorRefugioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerInfoUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerInfoUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerInfoUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerInfoUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebService1Soap">
+    <wsdl:operation name="RegistroUsuarios">
+      <wsdl:input message="tns:RegistroUsuariosSoapIn" />
+      <wsdl:output message="tns:RegistroUsuariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditarUsuario">
+      <wsdl:input message="tns:EditarUsuarioSoapIn" />
+      <wsdl:output message="tns:EditarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUsuario">
+      <wsdl:input message="tns:EliminarUsuarioSoapIn" />
+      <wsdl:output message="tns:EliminarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuarios">
+      <wsdl:input message="tns:ListarUsuariosSoapIn" />
+      <wsdl:output message="tns:ListarUsuariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistroRefugio">
+      <wsdl:input message="tns:RegistroRefugioSoapIn" />
+      <wsdl:output message="tns:RegistroRefugioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditarRefugio">
+      <wsdl:input message="tns:EditarRefugioSoapIn" />
+      <wsdl:output message="tns:EditarRefugioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarRefugio">
+      <wsdl:input message="tns:EliminarRefugioSoapIn" />
+      <wsdl:output message="tns:EliminarRefugioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarRefugios">
+      <wsdl:input message="tns:ListarRefugiosSoapIn" />
+      <wsdl:output message="tns:ListarRefugiosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistroAnimal">
+      <wsdl:input message="tns:RegistroAnimalSoapIn" />
+      <wsdl:output message="tns:RegistroAnimalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditarAnimal">
+      <wsdl:input message="tns:EditarAnimalSoapIn" />
+      <wsdl:output message="tns:EditarAnimalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerFolio">
+      <wsdl:input message="tns:ObtenerFolioSoapIn" />
+      <wsdl:output message="tns:ObtenerFolioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarAnimal">
+      <wsdl:input message="tns:EliminarAnimalSoapIn" />
+      <wsdl:output message="tns:EliminarAnimalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarAnimales">
+      <wsdl:input message="tns:ListarAnimalesSoapIn" />
+      <wsdl:output message="tns:ListarAnimalesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistroSolicitud">
+      <wsdl:input message="tns:RegistroSolicitudSoapIn" />
+      <wsdl:output message="tns:RegistroSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditarSolicitud">
+      <wsdl:input message="tns:EditarSolicitudSoapIn" />
+      <wsdl:output message="tns:EditarSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarSolicitud">
+      <wsdl:input message="tns:EliminarSolicitudSoapIn" />
+      <wsdl:output message="tns:EliminarSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarSolicitudes">
+      <wsdl:input message="tns:ListarSolicitudesSoapIn" />
+      <wsdl:output message="tns:ListarSolicitudesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarMensajeWS">
+      <wsdl:input message="tns:RegistrarMensajeWSSoapIn" />
+      <wsdl:output message="tns:RegistrarMensajeWSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarSolicitudCompleta">
+      <wsdl:input message="tns:RegistrarSolicitudCompletaSoapIn" />
+      <wsdl:output message="tns:RegistrarSolicitudCompletaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarSolicitudCompleta">
+      <wsdl:input message="tns:EliminarSolicitudCompletaSoapIn" />
+      <wsdl:output message="tns:EliminarSolicitudCompletaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerDetalleSolicitud">
+      <wsdl:input message="tns:VerDetalleSolicitudSoapIn" />
+      <wsdl:output message="tns:VerDetalleSolicitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarSolicitudesPorUsuario">
+      <wsdl:input message="tns:ListarSolicitudesPorUsuarioSoapIn" />
+      <wsdl:output message="tns:ListarSolicitudesPorUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarAnimalesPorRefugio">
+      <wsdl:input message="tns:ListarAnimalesPorRefugioSoapIn" />
+      <wsdl:output message="tns:ListarAnimalesPorRefugioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerInfoUsuario">
+      <wsdl:input message="tns:ObtenerInfoUsuarioSoapIn" />
+      <wsdl:output message="tns:ObtenerInfoUsuarioSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegistroUsuarios">
+      <soap:operation soapAction="http://adopcionws.com/RegistroUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditarUsuario">
+      <soap:operation soapAction="http://adopcionws.com/EditarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUsuario">
+      <soap:operation soapAction="http://adopcionws.com/EliminarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://adopcionws.com/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuarios">
+      <soap:operation soapAction="http://adopcionws.com/ListarUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroRefugio">
+      <soap:operation soapAction="http://adopcionws.com/RegistroRefugio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditarRefugio">
+      <soap:operation soapAction="http://adopcionws.com/EditarRefugio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarRefugio">
+      <soap:operation soapAction="http://adopcionws.com/EliminarRefugio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarRefugios">
+      <soap:operation soapAction="http://adopcionws.com/ListarRefugios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroAnimal">
+      <soap:operation soapAction="http://adopcionws.com/RegistroAnimal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditarAnimal">
+      <soap:operation soapAction="http://adopcionws.com/EditarAnimal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerFolio">
+      <soap:operation soapAction="http://adopcionws.com/ObtenerFolio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarAnimal">
+      <soap:operation soapAction="http://adopcionws.com/EliminarAnimal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAnimales">
+      <soap:operation soapAction="http://adopcionws.com/ListarAnimales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroSolicitud">
+      <soap:operation soapAction="http://adopcionws.com/RegistroSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditarSolicitud">
+      <soap:operation soapAction="http://adopcionws.com/EditarSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarSolicitud">
+      <soap:operation soapAction="http://adopcionws.com/EliminarSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarSolicitudes">
+      <soap:operation soapAction="http://adopcionws.com/ListarSolicitudes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarMensajeWS">
+      <soap:operation soapAction="http://adopcionws.com/RegistrarMensajeWS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarSolicitudCompleta">
+      <soap:operation soapAction="http://adopcionws.com/RegistrarSolicitudCompleta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarSolicitudCompleta">
+      <soap:operation soapAction="http://adopcionws.com/EliminarSolicitudCompleta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerDetalleSolicitud">
+      <soap:operation soapAction="http://adopcionws.com/VerDetalleSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarSolicitudesPorUsuario">
+      <soap:operation soapAction="http://adopcionws.com/ListarSolicitudesPorUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAnimalesPorRefugio">
+      <soap:operation soapAction="http://adopcionws.com/ListarAnimalesPorRefugio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerInfoUsuario">
+      <soap:operation soapAction="http://adopcionws.com/ObtenerInfoUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegistroUsuarios">
+      <soap12:operation soapAction="http://adopcionws.com/RegistroUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditarUsuario">
+      <soap12:operation soapAction="http://adopcionws.com/EditarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUsuario">
+      <soap12:operation soapAction="http://adopcionws.com/EliminarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://adopcionws.com/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuarios">
+      <soap12:operation soapAction="http://adopcionws.com/ListarUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroRefugio">
+      <soap12:operation soapAction="http://adopcionws.com/RegistroRefugio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditarRefugio">
+      <soap12:operation soapAction="http://adopcionws.com/EditarRefugio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarRefugio">
+      <soap12:operation soapAction="http://adopcionws.com/EliminarRefugio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarRefugios">
+      <soap12:operation soapAction="http://adopcionws.com/ListarRefugios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroAnimal">
+      <soap12:operation soapAction="http://adopcionws.com/RegistroAnimal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditarAnimal">
+      <soap12:operation soapAction="http://adopcionws.com/EditarAnimal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerFolio">
+      <soap12:operation soapAction="http://adopcionws.com/ObtenerFolio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarAnimal">
+      <soap12:operation soapAction="http://adopcionws.com/EliminarAnimal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAnimales">
+      <soap12:operation soapAction="http://adopcionws.com/ListarAnimales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistroSolicitud">
+      <soap12:operation soapAction="http://adopcionws.com/RegistroSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditarSolicitud">
+      <soap12:operation soapAction="http://adopcionws.com/EditarSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarSolicitud">
+      <soap12:operation soapAction="http://adopcionws.com/EliminarSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarSolicitudes">
+      <soap12:operation soapAction="http://adopcionws.com/ListarSolicitudes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarMensajeWS">
+      <soap12:operation soapAction="http://adopcionws.com/RegistrarMensajeWS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarSolicitudCompleta">
+      <soap12:operation soapAction="http://adopcionws.com/RegistrarSolicitudCompleta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarSolicitudCompleta">
+      <soap12:operation soapAction="http://adopcionws.com/EliminarSolicitudCompleta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerDetalleSolicitud">
+      <soap12:operation soapAction="http://adopcionws.com/VerDetalleSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarSolicitudesPorUsuario">
+      <soap12:operation soapAction="http://adopcionws.com/ListarSolicitudesPorUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAnimalesPorRefugio">
+      <soap12:operation soapAction="http://adopcionws.com/ListarAnimalesPorRefugio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerInfoUsuario">
+      <soap12:operation soapAction="http://adopcionws.com/ObtenerInfoUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService1">
+    <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">
+      <soap:address location="https://localhost:44314/WebService1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1Soap12" binding="tns:WebService1Soap12">
+      <soap12:address location="https://localhost:44314/WebService1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

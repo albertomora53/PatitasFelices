@@ -1,0 +1,111 @@
+﻿/* Contenedor de filtros */
+.filters-container {
+    background: #fff;
+    border-radius: 20px;
+    padding: 15px 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-top: -30px; /* Para que suba un poco si tienes un hero arriba */
+    z-index: 10;
+    position: relative;
+}
+
+.filter-pill {
+    border-radius: 50px;
+    border: 1px solid #dee2e6;
+    padding: 8px 20px;
+    margin-right: 10px;
+    background: white;
+    transition: 0.3s;
+    font-size: 0.9rem;
+}
+
+    .filter-pill.active {
+        background: #212529;
+        color: white;
+        border-color: #212529;
+    }
+
+/* Tarjeta de Mascota */
+.pet-card {
+    border: none;
+    border-radius: 25px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    background: white;
+}
+
+    .pet-card:hover {
+        transform: translateY(-10px);
+    }
+
+.pet-img-container {
+    position: relative;
+    height: 220px;
+}
+
+.pet-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Badges sobre la imagen */
+.badge-type {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(255,255,255,0.9);
+    padding: 5px 12px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.btn-fav {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: white;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    color: #cbd5e1;
+}
+
+/* Etiquetas de estado */
+.tag-status {
+    background: #f1f5f9;
+    color: #64748b;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    margin-right: 5px;
+}
+
+.tag-health {
+    color: #10b981; /* Verde para vacunado */
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Botón degradado */
+.btn-adopt {
+    background: linear-gradient(90deg, #ff4d4d, #ff944d);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 12px;
+    width: 100%;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+    .btn-adopt:hover {
+        opacity: 0.9;
+        color: white;
+    }

@@ -14,7 +14,7 @@ Estructura del proyecto
 
 
 Requisitos Previos
-Visual Studio community 22 o Visual Studio (2019 o posterior) con soporte para ASP.NET y desarrollo web.Microsoft 
+Visual Studio community 21 o Visual Studio (2019 o posterior) con soporte para ASP.NET y desarrollo web.Microsoft 
 SQL Server (2021 o superior / Nivel de compatibilidad 160).   
 .NET Framework 4.x
 
